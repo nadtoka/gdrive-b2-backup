@@ -1,0 +1,12 @@
+services:
+  gdrive-b2-backup:
+    build: .
+    container_name: gdrive-b2-backup
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:8080"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./secrets:/app/secrets:ro
